@@ -74,6 +74,12 @@
     width: 320px;
 }
 
+.order-card {
+    position: relative;
+    cursor: pointer;
+}
+
+
 .btn-review {
     background-color: #dfb428;
     color: white;

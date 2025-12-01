@@ -57,6 +57,9 @@ Route::group(['controller' => CheckoutController::class], function () {
 
     Route::get('/history', 'orderHistory')
         ->name('history');
+
+    Route::post('/bayar/{id}', 'updateStatus')
+    ->name('order.bayar');
 });
 
 // Route chatbot AI DeepSeek
@@ -97,5 +100,9 @@ Route::get('/test-deepseek', function() {
         echo "❌ Service Error: " . $e->getMessage() . "\n";
         return response()->json(['error' => $e->getMessage()], 500);
     }
+});
+
+Route::group(['controller' => \App\Http\Controllers\OrderController::class], function () {
+    Route::get('/order/{order}', 'show')->name('order.detail');
 });
 

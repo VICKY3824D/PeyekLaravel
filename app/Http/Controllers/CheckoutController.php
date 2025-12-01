@@ -147,7 +147,7 @@ class CheckoutController extends Controller
 
             //MIDTRANS INTEGRATION (next)
 
-            return redirect()->route('customer.history')
+            return redirect()->route('history')
                 ->with('success', 'Pesanan berhasil dibuat (non tunai)');
         }
 
@@ -155,15 +155,19 @@ class CheckoutController extends Controller
 
     public function orderHistory()
     {
-        // Ambil order items dengan relasi lengkap
-        $orders = OrderItem::whereHas('order', function($query) {
-            $query->where('user_id', Auth::id());
-        })
-        ->with(['order', 'item']) // Load relasi yang diperlukan
-        ->orderBy('created_at', 'desc')
-        ->get();
+        $orders = Order::where('user_id', Auth::id())
+            ->with(['orderItems.item'])  // Load item tiap order
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return view('customer.history', compact('orders'));
+    }
+
+
+    public function updateStatus(Request $request){
+
+
+
     }
 
 
