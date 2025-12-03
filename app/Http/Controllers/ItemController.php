@@ -18,11 +18,9 @@ class ItemController extends Controller
     }
 
     public function index(){
-        $items = Item::all();
+        $items = Item::where('is_available', true)->get();
 
-        $defaultItem = Item::where('id', 'pkcg')->first() ??
-                      Item::first() ??
-                      null;
+        $defaultItem = Item::where('is_available', true)->first();
 
         return view('customer.products', [
             'items' => $items,

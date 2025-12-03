@@ -5,6 +5,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\CheckoutController;
 use \App\Http\Controllers\CartController;
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -105,4 +106,6 @@ Route::get('/test-deepseek', function() {
 Route::group(['controller' => \App\Http\Controllers\OrderController::class], function () {
     Route::get('/order/{order}', 'show')->name('order.detail');
 });
+
+Route::resource('/item/admin', \App\Http\Controllers\ItemAdminController::class);
 
