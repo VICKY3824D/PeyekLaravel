@@ -25,25 +25,11 @@ class UserSeeder extends Seeder
 
         $users = [
             [
-                'nama' => 'Eni Erawati',
+                'nama' => 'Admin User',
                 'telepon' => '081234567890',
-                'password' => Hash::make('eni123'),
-                'id_lokasi' => $locations[0]->id,
-                'alamat' => 'Terbis, RT 02/RW 01',
-            ],
-            [
-                'nama' => 'Vicky',
-                'telepon' => '082223190195',
-                'password' => Hash::make('vicky123'),
-                'id_lokasi' => $locations[1]->id,
-                'alamat' => 'Jl. Merdeka No. 123, RT 02/RW 05',
-            ],
-            [
-                'nama' => 'Azriel',
-                'telepon' => '083456789012',
                 'password' => Hash::make('password123'),
-                'id_lokasi' => $locations[2]->id,
-                'alamat' => 'Jl. Melati No. 45, RT 03/RW 02',
+                'id_lokasi' => $locations[0]->id,
+                'alamat' => 'Jl. Admin No. 1, RT 01/RW 01',
             ],
             [
                 'nama' => 'Maya Sari',
@@ -51,6 +37,18 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password123'),
                 'id_lokasi' => $locations[4]->id,
                 'alamat' => 'Jl. Anggrek No. 89, RT 05/RW 04',
+            ],
+            [
+                'nama' => 'Eni Erawati',
+                'telepon' => '085229297152',
+                'password' => Hash::make('password123'),
+                'id_lokasi' => $locations[5]->id,
+            ],
+            [
+                'nama' => 'Vicky',
+                'telepon' => '082223190195',
+                'password' => Hash::make('password123'),
+                'id_lokasi' => $locations[5]->id,
             ]
         ];
 
