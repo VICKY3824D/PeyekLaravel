@@ -32,32 +32,23 @@ class UserSeeder extends Seeder
                 'alamat' => 'Jl. Admin No. 1, RT 01/RW 01',
             ],
             [
-                'nama' => 'Farhan Customer',
-                'telepon' => '082223190195',
-                'password' => Hash::make('password123'),
-                'id_lokasi' => $locations[1]->id,
-                'alamat' => 'Jl. Merdeka No. 123, RT 02/RW 05',
-            ],
-            [
-                'nama' => 'Siti Rahayu',
-                'telepon' => '083456789012',
-                'password' => Hash::make('password123'),
-                'id_lokasi' => $locations[2]->id,
-                'alamat' => 'Jl. Melati No. 45, RT 03/RW 02',
-            ],
-            [
-                'nama' => 'Budi Santoso',
-                'telepon' => '084567890123',
-                'password' => Hash::make('password123'),
-                'id_lokasi' => $locations[3]->id,
-                'alamat' => 'Jl. Kenanga No. 67, RT 04/RW 03',
-            ],
-            [
                 'nama' => 'Maya Sari',
                 'telepon' => '085678901234',
                 'password' => Hash::make('password123'),
                 'id_lokasi' => $locations[4]->id,
                 'alamat' => 'Jl. Anggrek No. 89, RT 05/RW 04',
+            ],
+            [
+                'nama' => 'Eni Erawati',
+                'telepon' => '085229297152',
+                'password' => Hash::make('password123'),
+                'id_lokasi' => $locations[5]->id,
+            ],
+            [
+                'nama' => 'Vicky',
+                'telepon' => '082223190195',
+                'password' => Hash::make('password123'),
+                'id_lokasi' => $locations[5]->id,
             ]
         ];
 
