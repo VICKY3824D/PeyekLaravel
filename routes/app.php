@@ -107,5 +107,14 @@ Route::group(['controller' => \App\Http\Controllers\OrderController::class], fun
     Route::get('/order/{order}', 'show')->name('order.detail');
 });
 
-Route::resource('/item/admin', \App\Http\Controllers\ItemAdminController::class);
+
+Route::resource('item/admin', \App\Http\Controllers\ItemAdminController::class);
+
+Route::group(['prefix' => 'admin/order', 'as' => 'admin.order.', 'controller' => \App\Http\Controllers\OrderAdminController::class], function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/{order}/bayar', 'bayar')->name('bayar');
+    Route::post('/{order}/selesai', 'selesai')->name('selesai');
+});
+
+
 

@@ -1,8 +1,8 @@
-@extends('customer.layout.master')
+@extends('admin.layout.master')
 
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ asset('assets/history/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/order_admin/style.css') }}">
 @endsection
 
 @section('content')
@@ -33,8 +33,8 @@
                         <p class="fs-6 fst-italic mb-0">Status</p>
                     </label>
                     <select name="status" id="statusSelect" class="form-select">
-                        <option value="">Semua</option>
-                        <option value="belum bayar" selected>Belum Bayar</option>
+                        <option value="" selected>Semua</option>
+                        <option value="belum bayar">Belum Bayar</option>
                         <option value="diproses">Diproses</option>
                         <option value="selesai">Selesai</option>
                     </select>
@@ -47,7 +47,7 @@
                             <div class="order-card mb-3 rounded position-relative">
 
                                 {{-- LINK FULL CARD --}}
-                                <a href="{{ route('order.detail', $order->id) }}" class="stretched-link"></a>
+{{--                                <a href="{{ route('order.detail', $order->id) }}" class="stretched-link"></a>--}}
 
                                 <div class="row align-items-center">
 {{--                                    <div class="col-auto">--}}
@@ -76,7 +76,7 @@
                                         @if($order->status == 'belum bayar' )
                                             {{-- FORM POST yang disembunyikan --}}
                                             <form id="formBayar-{{ $order->id }}"
-                                                  action="{{ route('order.bayar', $order->id) }}"
+                                                  action="{{ route('admin.order.bayar', $order->id) }}"
                                                   method="POST" style="display:none;">
                                                 @csrf
                                             </form>
@@ -84,17 +84,28 @@
                                             {{-- TOMBOL BAYAR yang tampil --}}
                                             <button type="button" class="btn btn-bayar"
                                                     onclick="
-                                                        if (confirm('Bayar Rp:{{ number_format($order->subtotal, 0, ',', '.') }}?')) {
+                                                        if (confirm('Yakin mengkonfirmasi pembayaran order {{ $order->no_order }}?\nTotal: Rp{{ number_format($order->subtotal, 0, ',', '.') }}')) {
                                                             document.getElementById('formBayar-{{ $order->id }}').submit();
                                                         }
                                                     ">
-                                                Bayar
+                                                Konfirmasi Pembayaran
                                             </button>
+                                        @elseif($order->status == 'diproses')
+                                            {{-- FORM POST yang disembunyikan --}}
+                                            <form id="formBayar-{{ $order->id }}"
+                                                  action="{{ route('admin.order.selesai', $order->id) }}"
+                                                  method="POST" style="display:none;">
+                                                @csrf
+                                            </form>
 
-                                        @elseif($order->status == 'selesai')
-                                           <button type="button" class="btn btn-review"
-                                                    onclick="alert('Review {{ $order->no_order }}')">
-                                                    Review
+                                            {{-- TOMBOL SELESAI yang tampil --}}
+                                            <button type="button" class="btn btn-selesai"
+                                                    onclick="
+                                                        if (confirm('Konfirmasi pesanan {{ $order->no_order }} selesai?')) {
+                                                            document.getElementById('formBayar-{{ $order->id }}').submit();
+                                                        }
+                                                    ">
+                                                Selesai Dibuat
                                             </button>
                                         @endif
                                     </div>
@@ -120,12 +131,7 @@
 @section('script')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Set default value ke "belum bayar"
     const statusSelect = document.getElementById('statusSelect');
-    statusSelect.value = 'belum bayar';
-
-    // Langsung filter order yang "belum bayar"
-    filterOrders('belum bayar');
 
     // ... kode JavaScript filter yang sebelumnya
     statusSelect.addEventListener('change', function() {
