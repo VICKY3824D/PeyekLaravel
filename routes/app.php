@@ -114,6 +114,7 @@ Route::group(['prefix' => 'admin/order', 'as' => 'admin.order.', 'controller' =>
     Route::get('/', 'index')->name('index');
     Route::post('/{order}/bayar', 'bayar')->name('bayar');
     Route::post('/{order}/selesai', 'selesai')->name('selesai');
+    Route::get('/{order}/detail', 'show')->name('detail');
 });
 
 

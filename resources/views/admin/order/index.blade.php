@@ -47,7 +47,7 @@
                             <div class="order-card mb-3 rounded position-relative">
 
                                 {{-- LINK FULL CARD --}}
-{{--                                <a href="{{ route('order.detail', $order->id) }}" class="stretched-link"></a>--}}
+                                <a href="{{ route('admin.order.detail', $order->id) }}" class="stretched-link"></a>
 
                                 <div class="row align-items-center">
 {{--                                    <div class="col-auto">--}}
@@ -72,7 +72,7 @@
                                             </span>
                                         </p>
                                     </div>
-                                    <div class="col-auto">
+                                    <div class="col-auto" style="z-index: 10; position: relative;">
                                         @if($order->status == 'belum bayar' )
                                             {{-- FORM POST yang disembunyikan --}}
                                             <form id="formBayar-{{ $order->id }}"
@@ -84,6 +84,7 @@
                                             {{-- TOMBOL BAYAR yang tampil --}}
                                             <button type="button" class="btn btn-bayar"
                                                     onclick="
+                                                        event.stopPropagation();
                                                         if (confirm('Yakin mengkonfirmasi pembayaran order {{ $order->no_order }}?\nTotal: Rp{{ number_format($order->subtotal, 0, ',', '.') }}')) {
                                                             document.getElementById('formBayar-{{ $order->id }}').submit();
                                                         }
@@ -101,6 +102,7 @@
                                             {{-- TOMBOL SELESAI yang tampil --}}
                                             <button type="button" class="btn btn-selesai"
                                                     onclick="
+                                                        event.stopPropagation();
                                                         if (confirm('Konfirmasi pesanan {{ $order->no_order }} selesai?')) {
                                                             document.getElementById('formBayar-{{ $order->id }}').submit();
                                                         }

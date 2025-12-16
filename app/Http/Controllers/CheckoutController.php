@@ -104,19 +104,47 @@ class CheckoutController extends Controller
         // Ongkir dihitung dari 2000 dikalikan jaraknya
         $ongkir = $jarakLocation->jarak * 2000;
 
-        // Selanjutnya Simpan Order
-        $order = Order::create([
+        // Jika pesanan COD maka langsung diproses
+        if ($validated_data['payment_method'] == 'cash'){
+            $order = Order::create([
             'user_id' => $user->id,
             'location_id' => $locationId,
-            'no_order' => 'ORD-' . $user->nama . '-' . time(),
-            'status' => 'belum bayar',
+            'no_order' => sprintf(
+                'ORD-%s-%s-%04d',
+                date('Ymd'),           // 20251216
+                str_pad($user->id, 3, '0', STR_PAD_LEFT), // 001
+                rand(1000, 9999)       // 5847
+            ),
+            'status' => 'diproses',
             'payment_method' => $validated_data['payment_method'],
             'catatan' => $validated_data['catatan'],
             'detail_alamat' => $validated_data['alamat'],
             'ongkir' => $ongkir,
             'subtotal' => $totalAmount,
             // tanggal selesai diurus nanti
-        ]);
+            ]);
+        } else{
+
+            // Selanjutnya Simpan Order
+            $order = Order::create([
+                'user_id' => $user->id,
+                'location_id' => $locationId,
+                'no_order' => sprintf(
+                    'ORD-%s-%s-%04d',
+                    date('Ymd'),           // 20251216
+                    str_pad($user->id, 3, '0', STR_PAD_LEFT), // 001
+                    rand(1000, 9999)       // 5847
+                ),
+                'status' => 'belum bayar',
+                'payment_method' => $validated_data['payment_method'],
+                'catatan' => $validated_data['catatan'],
+                'detail_alamat' => $validated_data['alamat'],
+                'ongkir' => $ongkir,
+                'subtotal' => $totalAmount,
+                // tanggal selesai diurus nanti
+            ]);
+        }
+
 
         // Simpan ke order item
         foreach ($cart as $item){

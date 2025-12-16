@@ -23,5 +23,14 @@ class OrderAdminController extends Controller
         return redirect()->back();
     }
 
+    public function show(Order $order){
+        $order->load([
+            'orderItems.item',
+            'location',
+        ]);
+
+        return view('admin.order.detail', compact('order'));
+    }
+
 
 }
