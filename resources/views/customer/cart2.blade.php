@@ -6,7 +6,8 @@
 @endsection
 
 @section('content')
-    <div class="cart-container" style="margin-top: 120px;">
+    <div class="container">
+        <div class="cart-container mx-auto" style="margin-top: 120px; max-width: 500px;">
         <h1 class="cart-title text-black mb-4">Keranjang Belanja</h1>
 
         <!-- Cart Items Container -->
@@ -40,6 +41,7 @@
             <h3>Keranjang Anda Kosong</h3>
             <p>Silakan tambahkan produk ke keranjang untuk melanjutkan belanja</p>
             <a href="{{ route('products') }}" class="continue-shopping">Lanjut Belanja</a>
+        </div>
         </div>
     </div>
 @endsection

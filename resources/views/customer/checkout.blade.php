@@ -156,14 +156,14 @@
                             <div class="payment-section mb-4">
                                 <h4 class="mb-3 fs-6 fw-bold">Metode Pembayaran</h4>
                                 <div class="payment-methods">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input"
-                                               type="radio" name="payment_method" id="gopay" value="gopay"
-                                               {{ old('payment_method', 'gopay') == 'gopay' ? 'checked' : '' }} required>
-                                        <label class="form-check-label" for="gopay">
-                                            <img src="{{ asset('img_item_upload/gopay.png') }}" alt="GoPay" class="payment-logo">
-                                        </label>
-                                    </div>
+{{--                                    <div class="form-check form-check-inline">--}}
+{{--                                        <input class="form-check-input"--}}
+{{--                                               type="radio" name="payment_method" id="gopay" value="gopay"--}}
+{{--                                               {{ old('payment_method', 'gopay') == 'gopay' ? 'checked' : '' }} required>--}}
+{{--                                        <label class="form-check-label" for="gopay">--}}
+{{--                                            <img src="{{ asset('img_item_upload/gopay.png') }}" alt="GoPay" class="payment-logo">--}}
+{{--                                        </label>--}}
+{{--                                    </div>--}}
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input"
                                                type="radio" name="payment_method" id="qris" value="qris"
