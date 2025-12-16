@@ -69,6 +69,20 @@ body {
     margin-top: 20px;
 }
 
+.price-summary p {
+    font-size: 0.9rem;
+}
+
+.fs-7 {
+    font-size: 0.875rem !important;
+}
+
+.total-price {
+    border-top: 1px solid #dee2e6;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
 .total-price {
     border-top: 1px solid #dee2e6;
     padding-top: 15px;

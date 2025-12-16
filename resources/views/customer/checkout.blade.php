@@ -18,9 +18,9 @@
             }
         }
 
-        $diskon = 3000;
+//        $diskon = 3000;
         $ongkir = 5000;
-        $TOTAL = $totalHarga + $ongkir - $diskon;
+        $TOTAL = $totalHarga + $ongkir /*- $diskon*/;
     @endphp
 
     <!-- Main Content -->
@@ -183,29 +183,30 @@
                                 </div>
                             </div>
 
-                            <!-- Price Summary Section -->
-                            <div class="price-summary-section mb-4">
-                                <h4 class="mb-3 fs-6 fw-bold">Ringkasan Pembayaran</h4>
-                                <div class="price-summary p-3 rounded">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <p class="mb-2">Harga Total: <span class="fw-semibold">
-                                            Rp{{  number_format($totalHarga, 0, ',', '.') }}</span></p>
-                                            <p class="mb-2">Ongkir: <span class="fw-semibold">
-                                            Rp{{  number_format($ongkir, 0, ',', '.') }}</span></p>
-                                        </div>
-                                        <div class="col-6 text-end">
-                                            <p class="fst-italic mb-2 text-success">
-                                                Diskon: Rp{{  number_format($diskon, 0, ',', '.') }}</p>
-                                        </div>
+
+                    <!-- Price Summary Section -->
+                    <div class="price-summary-section mb-4">
+                        <h4 class="mb-3 fs-6 fw-bold">Ringkasan Pembayaran</h4>
+                        <div class="price-summary p-3 rounded">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
+                                        <p class="mb-0 fs-7">Harga Total:</p>
+                                        <p class="mb-0 fw-semibold fs-7">Rp{{  number_format($totalHarga, 0, ',', '.') }}</p>
                                     </div>
-                                    <div class="total-price mt-3 pt-3 border-top">
-                                        <h5 class="text-center mb-0 fw-bold">
-                                            Total: Rp{{  number_format($TOTAL, 0, ',', '.') }}
-                                        </h5>
+                                    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                                        <p class="mb-0 fs-7">Ongkir:</p>
+                                        <p class="mb-0 fw-semibold fs-7">Rp{{  number_format($ongkir, 0, ',', '.') }}</p>
                                     </div>
                                 </div>
                             </div>
+                            <div class="total-price mt-3 pt-3 border-top">
+                                <h5 class="text-center mb-0 fw-bold">
+                                    Total: Rp{{  number_format($TOTAL, 0, ',', '.') }}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
 
                             <!-- Action Button -->
                             <div class="action-section">
