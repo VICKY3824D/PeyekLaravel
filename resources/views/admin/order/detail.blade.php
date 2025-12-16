@@ -49,6 +49,18 @@
                 </div>
             </div>
 
+            <div class="info-section">
+                <h4>Pengirim</h4>
+                <div class="info-item">
+                    <span class="info-label">Nama</span>
+                    <span class="info-value">{{ $order->user->nama }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Telepon</span>
+                    <span class="info-value">{{ $order->user->telepon }}</span>
+                </div>
+            </div>
+
             <!-- Alamat Pengiriman -->
             <div class="info-section">
                 <h4>Alamat Pengiriman</h4>

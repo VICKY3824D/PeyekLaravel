@@ -6,7 +6,8 @@
     @include('admin.layout.partials.flash-message')
 
     <!-- Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-5"
+        style="margin-top: 100px;">
         <h4 class="mb-0 fw-bold text-dark">Daftar Peyek</h4>
         @if($is_admin)
         <a href="{{ route('admin.create') }}" class="btn btn-primary btn-sm px-4">
