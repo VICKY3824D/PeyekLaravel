@@ -117,11 +117,8 @@
                     @else
                         <div class="alert alert-secondary" role="alert">
                             <h4 class="alert-heading">Tidak ada pesanan</h4>
-                            <p>Anda belum memiliki pesanan apapun. Silakan mulai berbelanja untuk melihat riwayat pesanan Anda di sini.</p>
+                            <p>Belum ada pelanggan yang berbelanja di aplikasi ini</p>
                             <hr>
-                            <p class="mb-0">
-                                <a href="{{ route('products') }}" class="btn btn-primary">Mulai Belanja</a>
-                            </p>
                         </div>
                     @endif
                 </div>
