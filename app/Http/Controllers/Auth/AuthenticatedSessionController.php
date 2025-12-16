@@ -28,8 +28,15 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-               return redirect()->intended(route('landing', absolute: false))
-            ->with('success', 'Login ' . Auth::user()->nama . ' berhasil!');
+        $userName = Auth::user()->nama;
+
+        if (in_array($userName, ['Eni Erawati', 'Vicky'])) {
+            return redirect()->intended(route('admin.order.index', absolute: false))
+                ->with('success', 'Login ' . $userName . ' berhasil!');
+        }
+
+        return redirect()->intended(route('landing', absolute: false))
+            ->with('success', 'Login ' . $userName . ' berhasil!');
     }
 
     /**

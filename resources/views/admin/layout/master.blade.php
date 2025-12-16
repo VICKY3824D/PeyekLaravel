@@ -3,6 +3,20 @@
 <body class="d-flex flex-column min-vh-100">
 @include('admin.layout.__navbar')
 
+{{--<nav class="sub-navbar fixed-top">--}}
+{{--    <div class="container">--}}
+{{--        <ul class="nav justify-content-evenly">--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="{{ route('admin.index') }}">--}}
+{{--                    Daftar Produk</a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="{{ route('admin.order.index') }}">Daftar Pesanan</a>--}}
+{{--            </li>--}}
+{{--        </ul>--}}
+{{--    </div>--}}
+{{--</nav>--}}
+
 @yield('content')
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

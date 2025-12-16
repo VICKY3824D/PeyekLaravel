@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('content')
-<div class="container-fluid px-3 py-4">
+<div class="container-fluid px-3 py-4 mt-5">
     <!-- Flash Messages -->
     @include('admin.layout.partials.flash-message')
 
